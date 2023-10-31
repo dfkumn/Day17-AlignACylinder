@@ -43,20 +43,6 @@ export class ExampleApp extends gfx.GfxApp
         // How do I set myClinder's localToParent matrix to make it align with some arbitrary axis?
         const axis = new gfx.Vector3(1,1,1);
 
-        /*
-        // using Matrix4.lookAt (aligns -Z with some arbirarty direction)
-        const Rx = gfx.Matrix4.makeRotationX(Math.PI/2);
-        const Tz = gfx.Matrix4.makeTranslation(new gfx.Vector3(0, 0, -0.5));
-        const lookAtAxis = gfx.Matrix4.lookAt(new gfx.Vector3(0,0,0), axis, new gfx.Vector3(0,1,0));
-        const M = gfx.Matrix4.multiplyAll(lookAtAxis, Tz, Rx);
-        this.myCylinder.setLocalToParentMatrix(M, false);
-        */
-
-        // usign Matrix4.align (aligns a reference dir to some arbitrary direction)
-        const Ty = gfx.Matrix4.makeTranslation(new gfx.Vector3(0, 0.5, 0));
-        const alignYwithAxis = gfx.Matrix4.makeAlign(new gfx.Vector3(0,1,0), axis);
-        const M2 = gfx.Matrix4.multiply(alignYwithAxis, Ty);
-        this.myCylinder.setLocalToParentMatrix(M2, false);
     }
 
 
